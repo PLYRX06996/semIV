@@ -1,0 +1,8 @@
+this is only for unweighted and undirected graphs.  
+
+Hamiltonian path: for a given graph if we can find a path that visits all the certices of the given graph exactly once.
+Hamiltonian Cycle: it is a cycel for a graph that visits every vertex of the given graph exactly once and returns to the starting vertex.
+GG info:
+1. Finding a Hamiltonian cycle is an NP-complete problem, meaning there's no known efficient solution for all graph types, but solutions exist for smaller or specific types.
+approach:
+Backtracking is used to find a Hamiltonian Cycle. Initialize an empty path array, place the starting vertex (e.g., 0) in the first position. Recursively add remaining vertices one by one, ensuring each new vertex is adjacent to the previous one and not already in the path. If a valid vertex is found, proceed; otherwise, backtrack.
