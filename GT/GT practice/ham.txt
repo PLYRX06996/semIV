@@ -1,0 +1,120 @@
+## 🔹 Code Explanation
+
+* `g` → adjacency matrix
+* `p` → stores current path
+* `v` → visited array
+
+---
+
+### 🔸 Function `f(u,c)`
+
+* `u` → current node
+* `c` → count of nodes visited
+
+#### Base case:
+
+```cpp
+if(c==n) return g[p[c-1]][p[0]];
+```
+
+* If all nodes visited → check if last connects to start
+* If yes → Hamiltonian **circuit exists**
+
+---
+
+#### Loop:
+
+```cpp
+for(int i=0;i<n;i++)
+```
+
+* Try all vertices
+
+```cpp
+if(!v[i] && g[u][i])
+```
+
+* If not visited AND edge exists
+
+```cpp
+v[i]=1;
+p[c]=i;
+```
+
+* Mark visited and add to path
+
+```cpp
+if(f(i,c+1)) return 1;
+```
+
+* Recursive call
+
+```cpp
+v[i]=0;
+```
+
+* Backtrack
+
+---
+
+### 🔸 Main Logic
+
+* Start from node `0`
+* Try building path
+* If success → print cycle
+* Else → no solution
+
+---
+
+## 🔹 Sample I/O
+
+### Input 1 (Has Circuit)
+
+```
+4
+0 1 1 1
+1 0 1 0
+1 1 0 1
+1 0 1 0
+```
+
+### Output 1
+
+```
+0 1 2 3 0
+```
+
+---
+
+### Input 2 (No Circuit)
+
+```
+4
+0 1 0 0
+1 0 1 0
+0 1 0 1
+0 0 1 0
+```
+
+### Output 2
+
+```
+No Hamiltonian Circuit
+```
+
+---
+
+### 🔹 Special Case
+
+* Graph with **single node (n=1)** → always a Hamiltonian circuit
+
+---
+
+## 🔹 Complexity Analysis
+
+* Time: **O(n!)** (tries all permutations)
+* Space: **O(n² + n)**
+
+---
+
+If you're good, next: **Prim’s & Kruskal’s (MST)** 🔥
